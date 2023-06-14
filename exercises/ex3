@@ -1,0 +1,47 @@
+# class exercise 3:
+# ex1:
+# password = input("Enter a password: ")
+# if len(password) >= 8 and password[:2].isupper() and password[-2:].isdigit():
+#     print("valid password")
+# else:
+#     print("invalid password")
+
+# ex2:
+#  very similar to question in the previous exercise
+
+# ex3:
+#  very similar to question in the previous exercise
+
+# ex4:
+# already done.
+
+# ex5:
+# inputs = []
+# for i in range(4):
+#     user_input = input("Enter a number or string: ")
+#     inputs.append(user_input)
+#
+# # Separate numbers and strings
+# number_list, string_list = [], []
+# for item in inputs:
+#     if item.isdigit():
+#         number_list.append(item)
+#     elif isinstance(item, str):
+#         string_list.append(item)
+#
+# # Print the lists
+# print("Number List:", number_list)
+# print("String List:", string_list)
+
+# ex6:
+# numbers = input("Enter a list of numbers (comma-separated): ").split(",")  # format: 1,2,3, 6
+# numbers = [int(num) for num in numbers]
+# 
+# # Get number x from the user
+# x = int(input("Enter a number: "))
+# 
+# if x not in numbers:
+#     numbers.append(x)
+# numbers.sort()  # notice that we change the list itself! the function doesn't have an output.
+# 
+# print("Sorted List:", numbers)
