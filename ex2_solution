@@ -1,0 +1,98 @@
+# class excercise 2:
+
+# ex1:
+# def count_currency(amount):
+#     denominations = [200, 100, 50, 20, 10, 5, 2, 1]
+#     counts = [0] * len(denominations)
+#
+#     for i in range(len(denominations)):
+#         count = amount // denominations[i]
+#         counts[i] = count
+#         amount -= count * denominations[i]
+#
+#     return counts
+#
+#
+# def print_currency(counts):
+#     currencies = ["bill/s of 200", "bill/s of 100", "bill/s of 50", "bill/s of 20", "coin/s of 10", "coin/s of 5",
+#                   "coin/s of 2", "coin/s of 1"]
+#
+#     for i in range(len(counts)):
+#         if counts[i] > 0:
+#             print(f"{counts[i]} {currencies[i]}")
+#
+#
+# amount = int(input("Enter the amount in NIS: "))
+# counts = count_currency(amount)
+# print_currency(counts)
+
+# ex2:
+# number_word = input("enter a value: ")
+# word_numbers = ["five", "four", "three", "two", "one"]
+# numbers = [5, 4, 3, 2, 1]
+# for word, number in zip(word_numbers, numbers):
+#     if word == number_word:
+#         print(number)
+
+# ex3:
+# first_num = int(input("enter the first number: "))
+# second_num = int(input("enter the second number: "))
+# third_num = int(input("enter the third number: "))
+#
+# if second_num - first_num == third_num - second_num:
+#       print(f"It is an arithmetic sequence. d = {second_num - first_num}")
+
+# ex 4
+# first_num = int(input("enter the first number: "))
+# second_num = int(input("enter the second number: "))
+# third_num = int(input("enter the third number: "))
+#
+# if second_num / first_num == third_num / second_num:
+#       print(f"It is an arithmetic sequence. d = {float(second_num / first_num)}")
+
+
+
+
+# ex5 + ex 6:
+# first_ch = input("enter the first string: ")
+# last_ch = input("enter the last string: ")
+# print("The first character:", first_ch[0])
+# print("The last character:", last_ch[len(first_ch) - 1])
+
+# ex7:
+# string = input("Enter a string: ")
+# x = int(input("Enter a number x: "))
+# print(string[1: 1 + x])
+
+
+
+
+# ex 8:
+# reverse_str = input("enter a string: ")
+# print(reverse_str[::-1])
+
+# ex 9:
+# repeated_str = input("enter the str to be repeated: ")
+# x = int(input("enter the amount of times for the string to be repeated: "))
+# for i in range(x):
+#     print(repeated_str)
+
+# ex 10:
+# even_str = input("enter digits: ")
+# even = ''
+# for digit in even_str:
+#     if int(digit) % 2 == 0:
+#         even += digit
+# print(even)
+
+# ex 11:
+# third_str = input("enter string: ")
+# third = ''
+# for char in range(2, len(third_str), 3):
+#     third += third_str[char]
+# print(third)
+
+# ex 12:
+# word = input("enter a string")
+# print(f'{word} - has {len(word.split(" "))} word/s.')
+
