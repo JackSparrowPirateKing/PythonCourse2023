@@ -1,0 +1,20 @@
+# class exercise 4:
+
+# ex1:
+# password = input("Enter a password: ")
+# valid_password = "AB123456" + password + "ce"
+# print("Valid password:", valid_password)
+
+# ex2: (thing of 2 ways), hints: sort, and max.
+
+# ex3: (thing of 2 ways), hints: sort, and min.
+
+# ex4:
+# main_string = input("Enter the main string: ")
+# sub_string = input("Enter the sub string: ")
+
+# if sub_string in main_string:
+#     print(f"'{main_string}' contains '{sub_string}'.")
+# else:
+#     print(f"'{main_string}' does not contain '{sub_string}'.")
+
