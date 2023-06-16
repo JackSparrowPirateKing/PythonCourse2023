@@ -1,0 +1,117 @@
+def option_1(clients, clients_packs, package):
+    phone_list = []
+    for client in clients_packs:
+        if client["pack"][0] == package:
+            id = client["id"]  # 22
+            for client_ in clients:
+                if client_[0] == id:
+                    phone_list.append(client_[2])
+    return phone_list
+
+
+def option_2(phone_number, new_pkg_name, clients, clients_packs):
+    for client in clients:
+        if client[2] == phone_number:
+            id = client[0]
+            for client_pack in clients_packs:
+                if client_pack["id"] == id:
+                    print("before", client_pack["pack"][0])
+                    client_pack["pack"][0] = new_pkg_name
+                    print("after", client_pack["pack"][0])
+
+
+def option_3(packs):  # check if it's from those that exist, or the ones used.
+    lowest_price, cheap_pack = packs[0]["cost"], packs[0]
+    for pack in packs[1:]:
+        if pack["cost"] < lowest_price:
+            lowest_price = pack["cost"]
+            cheap_pack = pack
+    return cheap_pack
+
+
+# def temp_4(packs, Client_packs):
+#     for client in Client_packs:
+#         if 2023 - client["pack"][1] > 2:
+#             client["pack"][0] = option_3(packs)["name"]
+#             client["pack"][1] = 2023
+
+
+def option_4(packs, clients_packs):
+    for client_pack in clients_packs:
+        start_pack_year = client_pack["pack"][1]
+        if 2023 - start_pack_year > 2:  # more then 2 years.
+            cheap_pack = option_3(packs)
+            client_pack["pack"][0], client_pack["pack"][1] = cheap_pack["name"], 2023
+
+
+def option_5(packs):
+    for pack in packs:
+        pack["cost"] += 0.1 * pack["cost"]
+
+
+# מה האפשרויות להציג בתפריט, הפונקציה אינה מחזירה דבר
+def show_options():
+    print("1. show all the customers with a given package")
+    print("2. change the package of a certain user")
+    print("3.show the details of the lowest package")
+    print("4.check who is in the same firm for more then a year and whether there is a better option")
+    print("5. increase the price of all the packages by 10%")
+
+
+'''
+1.להציג תפריט למשתמש
+2.לאפשר למשתמש לבחור באפשרות כלשהי- דהיינו, לקבל קלט מהמשתמש
+3.נרצה לאבחן את הקלט של המשתמש,ובהתבסס על הקלט לעבור לפונקציה הרלוונטית
+
+'''
+'''
+4. נרצה לבנות פונקציה שתקבל שם חבילה, Clients, Clients_pack
+להצהיר על רשימה ריקה שתכיל את מספרי הטלפון הסופיים
+בשלב הראשון:
+נרצה לעבור בלולאה חבילה חבילה ולמצוא את החבילות שתואמות לחבילה שקיבלנו, מבחינת שם החבילה
+במידה ומצאנו חבילה, נרצה לגזור את הid של אותה חבילה ספציפית ועבורה נרצה לעבור על רשימת הclients ולמצוא את מספר
+הטלפון ששייך לאותה ת.ז
+ואז להוסיף לרשימה ולהחזיר.
+'''
+
+
+def menu(packs, clients, clients_packs):
+    show_options()
+    menu_option = int(input("enter an option 1 - 5: "))
+    if menu_option == 1:
+        package = input("enter the name of the package: ")
+        res = option_1(clients, clients_packs, package)
+        print(res)
+    elif menu_option == 2:  # change to a different package based on unique id - phone number.
+        phone_number = int(input("enter the phone number for which you want to change the package: "))
+        new_pkg_name = input("enter the name of the pkg: ")
+        option_2(phone_number, new_pkg_name, clients, clients_packs)
+        print(clients_packs)
+    elif menu_option == 3:
+        cheap_pack = option_3(packs)
+        print("The cheap pack is:", cheap_pack)
+    elif menu_option == 4:
+        print(clients_packs)
+        option_4(packs, clients_packs)
+        print(clients_packs)
+    elif menu_option == 5:
+        print(packs)
+        option_5(packs)
+        print(packs)
+
+
+# main
+packs = [{"name": "police", "talks": 2000, "sms": 1000, "web": 1000, "cost": 30},
+         {"name": "teachers", "talks": 1500, "sms": 1000, "web": 1500, "cost": 40},
+         {"name": "general", "talks": 1000, "sms": 800, "web": 1000, "cost": 50}]
+
+Clients = [[11, "tom cohen", 52389, "tom@gmail.com"],
+           [22, "michal levy", 54367, "mich@gmail.com"],
+           [33, "ilan Daniel", 548930, "ilan@gmail.com"],
+           [44, "ran levy", 523457, "ran@gmail.com"]]
+
+Clients_packs = [{"id": 22, "pack": ["teachers", 2021]},
+                 {"id": 11, "pack": ["police", 2022]},
+                 {"id": 33, "pack": ["teachers", 2023]},
+                 {"id": 44, "pack": ["general", 2020]}]
+menu(packs, Clients, Clients_packs)
