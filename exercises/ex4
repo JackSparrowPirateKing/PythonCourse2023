@@ -5,9 +5,9 @@
 # valid_password = "AB123456" + password + "ce"
 # print("Valid password:", valid_password)
 
-# ex2: (thing of 2 ways), hints: sort, and max.
+# ex2: (think of 2 ways), hints: sort, and max.
 
-# ex3: (thing of 2 ways), hints: sort, and min.
+# ex3: (think of 2 ways), hints: sort, and min.
 
 # ex4:
 # main_string = input("Enter the main string: ")
