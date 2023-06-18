@@ -1,0 +1,123 @@
+# 1.
+def paint(matrix):
+    for row in matrix:
+        for column in row:
+            if column == 1:
+                print("@", end="")
+            else:
+                print(" ", end="")
+        print()
+
+
+def symmetricPrint(m):
+    final_mat = []
+    for row in m:
+        opposite = row[::-1]
+        final_row = row + opposite
+        final_mat.append(final_row)
+
+    temp_down = final_mat[::-1]
+    final_mat += temp_down
+    paint(final_mat)
+
+
+# 2.
+def isVacant(lst, row, seat):
+    idx = (row - 1) * 7 + seat - 1
+    return True if lst[idx] == 1 else False
+
+
+def allVacant(lst):
+    free_space = []
+    for idx, value in enumerate(lst):
+        if value == 1:
+            free_space.append((idx // 7 + 1, idx % 7 + 1))
+    return free_space
+
+
+# 3.
+def list2dict(lst):
+    author_dict = {}
+    lst = sorted(lst, key=lambda item: item[2])
+    for item in lst:
+        author_dict[item[1]] = []
+        for books in lst:
+            if item[1] == books[1]:
+                author_dict[item[1]].append(books[0])
+
+    return author_dict
+
+
+def sortNames(lst):
+    book_names = []
+    for item in lst:
+        book_names.append((item[0], len(item[0])))
+
+    books_lst = sorted(book_names, key=lambda book_prop: book_prop[1])
+    final_books = []
+    for book in books_lst:
+        final_books.append(book[0])
+    return final_books[::-1]
+
+
+#### DON'T change the code below this line ####
+def main():
+    # print('\n\n * * * * * Task 1 * * * * * ')
+    # m = [[1, 0, 0], [1, 1, 0], [1, 1, 1]]
+    # print(m)
+    # symmetricPrint(m)
+    # m = [[1]]
+    # print(m)
+    # symmetricPrint(m)
+    # m = [[0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 1, 0], [1, 1, 1, 1, 1, 1, 1, 1],
+    #      [0, 1, 0, 0, 1, 0, 0, 0], [0, 0, 1, 1, 0, 0, 0, 0]]
+    # print(m)
+    # symmetricPrint(m)
+
+    # print('\n\n * * * * * Task 2 * * * * * \n')
+    # lst = [1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
+    #        1]
+    # print(lst)
+    # print('\n***** clause A ***** \n')
+    # row, seat = 2, 4
+    # print('The seat', (row, seat), 'is', 'free.' if isVacant(lst, row, seat) else
+    # 'taken.')
+    # row, seat = 1, 2
+    # print('The seat', (row, seat), 'is', 'free.' if isVacant(lst, row, seat) else
+    # 'taken.')
+    # row, seat = 4, 4
+    # print('The seat', (row, seat), 'is', 'free.' if isVacant(lst, row, seat) else
+    # 'taken.')
+    # row, seat = 3, 7
+    # print('The seat', (row, seat), 'is', 'free.' if isVacant(lst, row, seat) else
+    # 'taken.')
+    #
+    # print('\n***** clause B ***** \n')
+    # print(allVacant(lst))
+    print('\n\n * * * * * Task 3 * * * * * \n')
+    lst = [('Karlsson-on-the-Roof', 'Astrid Lindgren', 1955),
+           ("Harry Potter and the Philosopher's Stone", 'Joanne Rowling', 1997),
+           ('Mio, My Mio', 'Astrid Lindgren', 1954), ('George and the Big Bang', 'Stephen Hawking', 2011)]
+    print(lst)
+    print('\n***** clause A ***** \n')
+    print(list2dict(lst))
+    print('\n***** clause B ***** \n')
+    print(sortNames(lst))
+    lst = [('Karlsson-on-the-Roof', 'Astrid Lindgren', 1955), ('George and the Blue Moon',
+                                                               'Stephen Hawking', 2016),
+           ("Harry Potter and the Philosopher's Stone",
+            'Joanne Rowling', 1997),
+           ("Harry Potter and the Chamber of Secrets", 'Joanne Rowling', 1998),
+           ('School', 'Arcady Gaidar', 1930),
+           ("Harry Potter and the Prisoner of Azkaban", 'Joanne Rowling', 1999),
+           ('Mio, My Mio', 'Astrid Lindgren', 1954), ('George and the Big Bang',
+                                                      'Stephen Hawking', 2011)]
+    print('\n', lst)
+    print('\n***** clause A ***** \n')
+    print(list2dict(lst))
+    print('\n***** clause B ***** \n')
+    print(sortNames(lst))
+
+
+if __name__ == '__main__':
+    main()
