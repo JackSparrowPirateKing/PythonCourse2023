@@ -1,0 +1,54 @@
+# 2022 X:
+# 2a.
+def breakint(num):
+    digits = []
+    while num > 0:
+        digits.append(num % 10)
+        num //= 10
+    return digits
+
+
+def revint(num):
+    temp_lst = breakint(num)
+    str_num = ''
+    for num in temp_lst:
+        str_num += str(num)
+    return int(str_num)
+
+
+# val = int(input("enter a number: "))
+print(breakint(6351))
+# 2b.
+print(revint(6351))
+
+
+# 2023 Y, question 1:
+
+
+#### y:
+# 1a.
+def parkingPrice(rates, city, area):
+    for item in rates:
+        if item['city'] == city and item['area'] == area:
+            return item['price']
+
+
+def parkingCost(p, rates):
+    rate = parkingPrice(rates, p['city'], p['area'])
+    start_hour = p['start_hour']
+    if 'end_hour' not in p:
+        return (23 - start_hour) * rate
+    else:
+        return (p['end_hour'] - start_hour) * rate
+
+
+p1 = {'car': 3456, 'city': 'tel-aviv', 'area': 'center', 'start_hour': 11, 'end_hour': 13}
+p2 = {'car': 5463, 'city': 'beer-sheva', 'area': 'old-town', 'start_hour': 13}
+rates = [{'city': 'tel-aviv', 'area': 'north', 'price': 10},
+         {'city': 'tel-aviv', 'area': 'center', 'price': 15},
+         {'city': 'beer-sheva', 'area': 'old-town', 'price': 4}]
+print(parkingPrice(rates, 'tel-aviv', 'center'))
+print(parkingCost(p1, rates))
+print(parkingCost(p2, rates))
+
+
